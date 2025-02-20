@@ -33,12 +33,17 @@ type ConfigMigrate struct {
 	PathMigrations string      `mapstructure:"PATH_MIGRATIONS"`
 }
 
+type ConfigTransactionDenied struct {
+	CreditCardNumbers string `mapstructure:"CREDIT_CARD_NUMBERS"`
+}
+
 type Config struct {
-	AppName  string         `mapstructure:"APP_NAME"`
-	WebPort  string         `mapstructure:"WEB_PORT"`
-	Database ConfigDatabase `mapstructure:"DATABASE"`
-	Cache    ConfigCache    `mapstructure:"CACHE"`
-	Bcrypt   ConfigBcrypt   `mapstructure:"BCRYPT"`
-	Jwt      ConfigJwt      `mapstructure:"JWT"`
-	Migrate  ConfigMigrate  `mapstructure:"MIGRATE"`
+	AppName           string                  `mapstructure:"APP_NAME"`
+	WebPort           string                  `mapstructure:"WEB_PORT"`
+	Database          ConfigDatabase          `mapstructure:"DATABASE"`
+	Cache             ConfigCache             `mapstructure:"CACHE"`
+	Bcrypt            ConfigBcrypt            `mapstructure:"BCRYPT"`
+	Jwt               ConfigJwt               `mapstructure:"JWT"`
+	Migrate           ConfigMigrate           `mapstructure:"MIGRATE"`
+	TransactionDenied ConfigTransactionDenied `mapstructure:"TRANSACTION_DENIED"`
 }

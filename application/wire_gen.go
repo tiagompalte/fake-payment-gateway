@@ -29,7 +29,7 @@ func Build() (App, error) {
 	accountRepository := data.NewAccountRepository(connectorSql)
 	findAccountByTokenUseCase := usecase.NewFindAccountByTokenUseCaseImpl(accountRepository, cacheCache)
 	transactionRepository := data.NewTransactionRepository(connectorSql)
-	createTransactionUseCase := usecase.NewCreateTransactionUseCaseImpl(transactionRepository)
+	createTransactionUseCase := usecase.NewCreateTransactionUseCaseImpl(transactionRepository, configsConfig)
 	createAccountUseCase := usecase.NewCreateAccountUseCaseImpl(accountRepository)
 	useCase := usecase.UseCase{
 		HealthCheckUseCase:        healthCheckUseCase,
