@@ -1,0 +1,38 @@
+services:
+  app-test:
+    container_name: golang-clean-arch-template-test-app
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    environment:
+      - ENV=dockertest
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    container_name: golang-clean-arch-template-test-db
+    image: mysql:8.0.23
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_DATABASE: db_todo_test
+      LANG: en_US.utf8
+    volumes:
+      - ./scripts/migrations:/docker-entrypoint-initdb.d
+    command:
+      - "--character-set-server=utf8"
+      - "--collation-server=utf8_general_ci"
+      - "--sql_mode="
+    cap_add:
+      - SYS_NICE
+    tmpfs:
+      - /var/lib/mysql/:rw,noexec,nosuid,size=600m
+      - /tmp/:rw,noexec,nosuid,size=50m
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10

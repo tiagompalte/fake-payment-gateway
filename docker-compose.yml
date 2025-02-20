@@ -1,0 +1,59 @@
+services:
+  app:
+    container_name: golang-clean-arch-template-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ENV=docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  redis:
+    container_name: golang-clean-arch-template-cache
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - /tmp/redis-data:/var/lib/redis
+      - /tmp/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+
+  mysql:
+    container_name: golang-clean-arch-template-db
+    image: mysql:8.0.23
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_DATABASE: db_todo
+      LANG: en_US.utf8
+    volumes:
+      - ./scripts/migrations:/docker-entrypoint-initdb.d
+    command:
+      - "--character-set-server=utf8"
+      - "--collation-server=utf8_general_ci"
+      - "--sql_mode="
+    cap_add:
+      - SYS_NICE
+    tmpfs:
+      - /var/lib/mysql/:rw,noexec,nosuid,size=600m
+      - /tmp/:rw,noexec,nosuid,size=50m
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  dbdata:

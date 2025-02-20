@@ -1,0 +1,274 @@
+definitions:
+  handler.CategoryResponse:
+    properties:
+      name:
+        type: string
+      slug:
+        type: string
+    type: object
+  handler.CreateTaskRequest:
+    properties:
+      category_name:
+        type: string
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  handler.SigninRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  handler.SigninResponse:
+    properties:
+      access_token:
+        type: string
+    type: object
+  handler.SignupRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  handler.SignupResponse:
+    properties:
+      access_token:
+        type: string
+    type: object
+  handler.TaskResponse:
+    properties:
+      category:
+        $ref: '#/definitions/handler.CategoryResponse'
+      description:
+        type: string
+      done:
+        type: boolean
+      name:
+        type: string
+      uuid:
+        type: string
+    type: object
+  handler.UserResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/health-check:
+    get:
+      description: Verify health check application
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Health Check
+      tags:
+      - Health Check
+  /api/v1/categories:
+    get:
+      description: Find all categories
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Categories list
+          schema:
+            items:
+              $ref: '#/definitions/handler.CategoryResponse'
+            type: array
+      security:
+      - BearerAuth: []
+      summary: Find All Categories
+      tags:
+      - Category
+  /api/v1/current/user:
+    get:
+      description: Find user logged
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User
+          schema:
+            $ref: '#/definitions/handler.UserResponse'
+      security:
+      - BearerAuth: []
+      summary: User Logged
+      tags:
+      - User
+  /api/v1/signin:
+    post:
+      consumes:
+      - application/json
+      description: Login user
+      parameters:
+      - description: Login User
+        in: body
+        name: signin
+        required: true
+        schema:
+          $ref: '#/definitions/handler.SigninRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Tokens
+          schema:
+            $ref: '#/definitions/handler.SigninResponse'
+      summary: Sign In
+      tags:
+      - Sign In
+  /api/v1/signup:
+    post:
+      consumes:
+      - application/json
+      description: Create new User
+      parameters:
+      - description: New User
+        in: body
+        name: signup
+        required: true
+        schema:
+          $ref: '#/definitions/handler.SignupRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Tokens
+          schema:
+            $ref: '#/definitions/handler.SignupResponse'
+      summary: Sign Up
+      tags:
+      - Sign Up
+  /api/v1/tasks:
+    get:
+      description: Find all tasks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Tasks list
+          schema:
+            items:
+              $ref: '#/definitions/handler.TaskResponse'
+            type: array
+      security:
+      - BearerAuth: []
+      summary: Find All Tasks
+      tags:
+      - Task
+    post:
+      consumes:
+      - application/json
+      description: Create new Task
+      parameters:
+      - description: New Task
+        in: body
+        name: new_task
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Create Task success
+          schema:
+            $ref: '#/definitions/handler.TaskResponse'
+      security:
+      - BearerAuth: []
+      summary: Create Task
+      tags:
+      - Task
+  /api/v1/tasks/{uuid}:
+    delete:
+      description: Delete task by UUID
+      parameters:
+      - description: Task UUID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+      security:
+      - BearerAuth: []
+      summary: Delete task
+      tags:
+      - Task
+    get:
+      description: Find one task by UUID
+      parameters:
+      - description: Task UUID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Task
+          schema:
+            $ref: '#/definitions/handler.TaskResponse'
+      security:
+      - BearerAuth: []
+      summary: Find One Task
+      tags:
+      - Task
+  /api/v1/tasks/{uuid}/done:
+    put:
+      description: Update task as done
+      parameters:
+      - description: Task UUID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+      security:
+      - BearerAuth: []
+      summary: Mark task as done
+      tags:
+      - Task
+  /api/v1/tasks/{uuid}/undone:
+    put:
+      description: Update task as undone
+      parameters:
+      - description: Task UUID
+        in: path
+        name: uuid
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+      security:
+      - BearerAuth: []
+      summary: Mark task as undone
+      tags:
+      - Task
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
