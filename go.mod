@@ -6,7 +6,7 @@ require (
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-redis/redis/v8 v8.11.5
-	github.com/go-sql-driver/mysql v1.8.1
+	github.com/go-sql-driver/mysql v1.9.0
 	github.com/golang-jwt/jwt/v4 v4.5.1
 	github.com/google/uuid v1.6.0
 	github.com/google/wire v0.6.0
@@ -19,7 +19,6 @@ require (
 )
 
 require (
-	golang.org/x/sync v0.11.0 // indirect
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
@@ -52,6 +51,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 // indirect
 	golang.org/x/net v0.33.0 // indirect
+	golang.org/x/sync v0.11.0
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/tools v0.24.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
