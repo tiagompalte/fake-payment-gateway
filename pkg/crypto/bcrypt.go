@@ -3,8 +3,8 @@ package crypto
 import (
 	"context"
 
-	"github.com/tiagompalte/golang-clean-arch-template/configs"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/configs"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
 )
 

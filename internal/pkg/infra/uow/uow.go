@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/tiagompalte/golang-clean-arch-template/internal/pkg/infra/data"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/internal/pkg/infra/data"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 )
 
 type Uow struct {

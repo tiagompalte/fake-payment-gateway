@@ -2,13 +2,13 @@ package pkg
 
 import (
 	"github.com/google/wire"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/auth"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/cache"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/config"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/crypto"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/log"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/server"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/auth"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/cache"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/config"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/crypto"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/log"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/server"
 )
 
 var ProviderSet = wire.NewSet(

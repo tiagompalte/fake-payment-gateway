@@ -1,11 +1,11 @@
 package application
 
 import (
-	"github.com/tiagompalte/golang-clean-arch-template/configs"
-	"github.com/tiagompalte/golang-clean-arch-template/internal/app/usecase"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/auth"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/log"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/server"
+	"github.com/tiagompalte/fake-payment-gateway/configs"
+	"github.com/tiagompalte/fake-payment-gateway/internal/app/usecase"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/auth"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/log"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/server"
 )
 
 type App struct {

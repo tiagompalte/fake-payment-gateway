@@ -1,9 +1,9 @@
-APP_NAME = "TODO API"
+APP_NAME = "Fake Payment Gateway API"
 WEB_PORT = ":5000"
 
 [DATABASE]
 DRIVER_NAME = "mysql"
-CONNECTION_SOURCE = "root:root@tcp(localhost:3306)/db_todo?parseTime=true"
+CONNECTION_SOURCE = "root:root@tcp(localhost:3306)/db_fake_payment_gateway?parseTime=true"
 
 [CACHE]
 DRIVER_NAME = "redis"

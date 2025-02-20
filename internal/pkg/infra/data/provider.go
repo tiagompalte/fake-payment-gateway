@@ -5,7 +5,6 @@ import (
 )
 
 var ProviderSet = wire.NewSet(
-	NewCategoryRepository,
-	NewTaskRepository,
-	NewUserRepository,
+	NewAccountRepository,
+	NewTransactionRepository,
 )

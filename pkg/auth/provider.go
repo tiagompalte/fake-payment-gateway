@@ -1,6 +1,6 @@
 package auth
 
-import "github.com/tiagompalte/golang-clean-arch-template/configs"
+import "github.com/tiagompalte/fake-payment-gateway/configs"
 
 func ProviderSet(
 	config configs.Config,

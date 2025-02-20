@@ -3,9 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"github.com/tiagompalte/golang-clean-arch-template/internal/app/usecase"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/server"
+	"github.com/tiagompalte/fake-payment-gateway/internal/app/usecase"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/server"
 )
 
 // @Summary Health Check

@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/healthcheck"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/healthcheck"
 )
 
 type Scanner interface {

@@ -3,9 +3,9 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/auth"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/server"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/auth"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/server"
 )
 
 func AuthMiddleware(header string, auth auth.Auth) server.Middleware {

@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"github.com/tiagompalte/golang-clean-arch-template/application"
-	"github.com/tiagompalte/golang-clean-arch-template/internal/pkg/server/handler"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/server"
+	"github.com/tiagompalte/fake-payment-gateway/application"
+	"github.com/tiagompalte/fake-payment-gateway/internal/pkg/server/handler"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/server"
 )
 
 func CreateRoute(app application.App) []server.GroupRoute {

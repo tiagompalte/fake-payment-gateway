@@ -1,6 +1,6 @@
 services:
   app-test:
-    container_name: golang-clean-arch-template-test-app
+    container_name: fake-payment-gateway-test-app
     build:
       context: .
       dockerfile: Dockerfile-test
@@ -11,7 +11,7 @@ services:
         condition: service_healthy
 
   mysql:
-    container_name: golang-clean-arch-template-test-db
+    container_name: fake-payment-gateway-test-db
     image: mysql:8.0.23
     ports:
       - "3306:3306"
@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
-      MYSQL_DATABASE: db_todo_test
+      MYSQL_DATABASE: db_fake_payment_gateway_test
       LANG: en_US.utf8
     volumes:
       - ./scripts/migrations:/docker-entrypoint-initdb.d

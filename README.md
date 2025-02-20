@@ -1,4 +1,4 @@
-# Golang Clean Architecture Template API
+# Fake Payment Gateway API
 
 ### Doc URL
 

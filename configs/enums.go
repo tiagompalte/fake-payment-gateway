@@ -1,6 +1,6 @@
 package configs
 
-// Database
+// Database: mysql, postgres
 type DatabaseType string
 
 const (
@@ -12,7 +12,7 @@ func (t DatabaseType) String() string {
 	return string(t)
 }
 
-// Cache
+// Cache: memory, mock, redis
 type CacheType string
 
 const (
@@ -21,7 +21,7 @@ const (
 	CacheRedis  CacheType = "redis"
 )
 
-// Migrate
+// Migrate: golang-migrate, native
 type MigrateType string
 
 const (

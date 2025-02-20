@@ -1,8 +1,25 @@
 {
+    "schemes": [
+        "http",
+        "https"
+    ],
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "Fake Payment Gateway API",
+        "title": "Fake Payment Gateway API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
     },
+    "basePath": "/",
     "paths": {
         "/api/health-check": {
             "get": {
@@ -21,62 +38,14 @@
                 }
             }
         },
-        "/api/v1/categories": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Find all categories",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Category"
-                ],
-                "summary": "Find All Categories",
-                "responses": {
-                    "200": {
-                        "description": "Categories list",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/handler.CategoryResponse"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/current/user": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Find user logged",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "User Logged",
-                "responses": {
-                    "200": {
-                        "description": "User",
-                        "schema": {
-                            "$ref": "#/definitions/handler.UserResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/signin": {
+        "/api/v1/transactions": {
             "post": {
-                "description": "Login user",
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ],
+                "description": "Create new transaction",
                 "consumes": [
                     "application/json"
                 ],
@@ -84,355 +53,71 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Sign In"
+                    "Transaction"
                 ],
-                "summary": "Sign In",
+                "summary": "Create Transaction",
                 "parameters": [
                     {
-                        "description": "Login User",
-                        "name": "signin",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/handler.SigninRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Tokens",
-                        "schema": {
-                            "$ref": "#/definitions/handler.SigninResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/signup": {
-            "post": {
-                "description": "Create new User",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Sign Up"
-                ],
-                "summary": "Sign Up",
-                "parameters": [
-                    {
-                        "description": "New User",
-                        "name": "signup",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/handler.SignupRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Tokens",
-                        "schema": {
-                            "$ref": "#/definitions/handler.SignupResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/tasks": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Find all tasks",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Task"
-                ],
-                "summary": "Find All Tasks",
-                "responses": {
-                    "200": {
-                        "description": "Tasks list",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/handler.TaskResponse"
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Create new Task",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Task"
-                ],
-                "summary": "Create Task",
-                "parameters": [
-                    {
-                        "description": "New Task",
+                        "description": "New Transaction",
                         "name": "new_task",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/handler.CreateTaskRequest"
+                            "$ref": "#/definitions/handler.CreateTransactionRequest"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "Create Task success",
+                        "description": "Create Transaction success",
                         "schema": {
-                            "$ref": "#/definitions/handler.TaskResponse"
+                            "$ref": "#/definitions/handler.CreateTransactionResponse"
                         }
-                    }
-                }
-            }
-        },
-        "/api/v1/tasks/{uuid}": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Find one task by UUID",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Task"
-                ],
-                "summary": "Find One Task",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Task UUID",
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Task",
-                        "schema": {
-                            "$ref": "#/definitions/handler.TaskResponse"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Delete task by UUID",
-                "tags": [
-                    "Task"
-                ],
-                "summary": "Delete task",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Task UUID",
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    }
-                }
-            }
-        },
-        "/api/v1/tasks/{uuid}/done": {
-            "put": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Update task as done",
-                "tags": [
-                    "Task"
-                ],
-                "summary": "Mark task as done",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Task UUID",
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    }
-                }
-            }
-        },
-        "/api/v1/tasks/{uuid}/undone": {
-            "put": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Update task as undone",
-                "tags": [
-                    "Task"
-                ],
-                "summary": "Mark task as undone",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Task UUID",
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "handler.CategoryResponse": {
+        "handler.CreateTransactionRequest": {
             "type": "object",
             "properties": {
-                "name": {
+                "amount": {
+                    "type": "number"
+                },
+                "credit_card_expires_month": {
+                    "type": "integer"
+                },
+                "credit_card_expires_year": {
+                    "type": "integer"
+                },
+                "credit_card_number": {
                     "type": "string"
                 },
-                "slug": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.CreateTaskRequest": {
-            "type": "object",
-            "properties": {
-                "category_name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.SigninRequest": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "type": "string"
-                },
-                "password": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.SigninResponse": {
-            "type": "object",
-            "properties": {
-                "access_token": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.SignupRequest": {
-            "type": "object",
-            "properties": {
-                "email": {
+                "credit_card_security_code": {
                     "type": "string"
                 },
                 "name": {
                     "type": "string"
-                },
-                "password": {
-                    "type": "string"
                 }
             }
         },
-        "handler.SignupResponse": {
+        "handler.CreateTransactionResponse": {
             "type": "object",
             "properties": {
-                "access_token": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.TaskResponse": {
-            "type": "object",
-            "properties": {
-                "category": {
-                    "$ref": "#/definitions/handler.CategoryResponse"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "done": {
-                    "type": "boolean"
-                },
-                "name": {
+                "status": {
                     "type": "string"
                 },
                 "uuid": {
                     "type": "string"
                 }
             }
-        },
-        "handler.UserResponse": {
-            "type": "object",
-            "properties": {
-                "created_at": {
-                    "type": "string"
-                },
-                "email": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
         }
     },
     "securityDefinitions": {
-        "BearerAuth": {
+        "apiKey": {
             "type": "apiKey",
-            "name": "Authorization",
+            "name": "access_token",
             "in": "header"
         }
     }

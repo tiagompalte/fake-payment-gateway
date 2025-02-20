@@ -1,6 +1,6 @@
 package nativemigrate
 
-import "github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+import "github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 
 type repo struct {
 	data repository.DataSqlManager

@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
 )
 
 type TransactionSql struct {

@@ -1,9 +1,9 @@
 package constant
 
 import (
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/context"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/context"
 )
 
-const Authorization = "Authorization"
+const AccessToken = "access_token"
 
-const ContextUser context.ContextKey = "user"
+const ContextAccount context.ContextKey = "account"

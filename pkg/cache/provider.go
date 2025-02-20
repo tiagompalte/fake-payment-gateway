@@ -1,7 +1,7 @@
 package cache
 
 import (
-	"github.com/tiagompalte/golang-clean-arch-template/configs"
+	"github.com/tiagompalte/fake-payment-gateway/configs"
 )
 
 func ProviderSet(

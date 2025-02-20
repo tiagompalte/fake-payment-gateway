@@ -10,8 +10,8 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 
-	"github.com/tiagompalte/golang-clean-arch-template/configs"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/configs"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
 )
 
 type GolangMigrate struct {

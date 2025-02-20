@@ -1,4 +1,4 @@
-module github.com/tiagompalte/golang-clean-arch-template
+module github.com/tiagompalte/fake-payment-gateway
 
 go 1.23
 

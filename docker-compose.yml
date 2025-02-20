@@ -1,6 +1,6 @@
 services:
   app:
-    container_name: golang-clean-arch-template-app
+    container_name: fake-payment-gateway-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -15,7 +15,7 @@ services:
         condition: service_healthy
 
   redis:
-    container_name: golang-clean-arch-template-cache
+    container_name: fake-payment-gateway-cache
     image: redis
     command: redis-server
     ports:
@@ -29,7 +29,7 @@ services:
       test: ["CMD", "redis-cli", "ping"]
 
   mysql:
-    container_name: golang-clean-arch-template-db
+    container_name: fake-payment-gateway-db
     image: mysql:8.0.23
     ports:
       - "3306:3306"
@@ -37,7 +37,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
-      MYSQL_DATABASE: db_todo
+      MYSQL_DATABASE: db_fake_payment_gateway
       LANG: en_US.utf8
     volumes:
       - ./scripts/migrations:/docker-entrypoint-initdb.d

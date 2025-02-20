@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
 )
 
 func RespondJSON(w http.ResponseWriter, statusCode int, data any) error {

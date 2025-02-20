@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/config"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/migrate"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/config"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/migrate"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 )
 
 func main() {

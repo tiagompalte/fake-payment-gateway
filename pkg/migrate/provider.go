@@ -1,9 +1,9 @@
 package migrate
 
 import (
-	"github.com/tiagompalte/golang-clean-arch-template/configs"
-	nativemigrate "github.com/tiagompalte/golang-clean-arch-template/pkg/migrate/native"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/configs"
+	nativemigrate "github.com/tiagompalte/fake-payment-gateway/pkg/migrate/native"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 )
 
 func ProviderSet(

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 )
 
 type VersionRepositoryImpl struct {

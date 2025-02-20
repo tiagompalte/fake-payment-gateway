@@ -1,38 +1,31 @@
 package data
 
 import (
-	"github.com/tiagompalte/golang-clean-arch-template/internal/app/protocols"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/internal/app/protocols"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 )
 
 type RepositoryManager interface {
-	Task() protocols.TaskRepository
-	Category() protocols.CategoryRepository
-	User() protocols.UserRepository
+	Account() protocols.AccountRepository
+	Transaction() protocols.TransactionRepository
 }
 
 type repo struct {
-	task     protocols.TaskRepository
-	category protocols.CategoryRepository
-	user     protocols.UserRepository
+	account     protocols.AccountRepository
+	transaction protocols.TransactionRepository
 }
 
 func NewRepositoryManager(conn repository.ConnectorSql) RepositoryManager {
 	return repo{
-		task:     NewTaskRepository(conn),
-		category: NewCategoryRepository(conn),
-		user:     NewUserRepository(conn),
+		account:     NewAccountRepository(conn),
+		transaction: NewTransactionRepository(conn),
 	}
 }
 
-func (r repo) Task() protocols.TaskRepository {
-	return r.task
+func (r repo) Account() protocols.AccountRepository {
+	return r.account
 }
 
-func (r repo) Category() protocols.CategoryRepository {
-	return r.category
-}
-
-func (r repo) User() protocols.UserRepository {
-	return r.user
+func (r repo) Transaction() protocols.TransactionRepository {
+	return r.transaction
 }

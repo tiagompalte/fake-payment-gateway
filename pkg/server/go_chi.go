@@ -14,7 +14,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	httpSwagger "github.com/swaggo/http-swagger"
 
-	"github.com/tiagompalte/golang-clean-arch-template/configs"
+	"github.com/tiagompalte/fake-payment-gateway/configs"
 )
 
 type goChiServer struct {

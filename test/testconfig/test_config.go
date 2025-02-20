@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"github.com/tiagompalte/golang-clean-arch-template/application"
-	"github.com/tiagompalte/golang-clean-arch-template/internal/pkg/server"
+	"github.com/tiagompalte/fake-payment-gateway/application"
+	"github.com/tiagompalte/fake-payment-gateway/internal/pkg/server"
 )
 
 var config *testConfig

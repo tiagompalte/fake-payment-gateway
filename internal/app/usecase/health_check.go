@@ -3,8 +3,8 @@ package usecase
 import (
 	"context"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/errors"
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/healthcheck"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/healthcheck"
 	"golang.org/x/sync/errgroup"
 )
 

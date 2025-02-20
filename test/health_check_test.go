@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tiagompalte/golang-clean-arch-template/test/testconfig"
+	"github.com/tiagompalte/fake-payment-gateway/test/testconfig"
 )
 
 func TestHealthCheck(t *testing.T) {

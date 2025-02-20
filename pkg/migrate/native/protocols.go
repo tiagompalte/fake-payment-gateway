@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/tiagompalte/golang-clean-arch-template/pkg/repository"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/repository"
 )
 
 type File interface {
