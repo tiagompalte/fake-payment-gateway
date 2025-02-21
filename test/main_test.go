@@ -28,7 +28,7 @@ func GenerateAccountAndToken() entity.Account {
 
 	app := testconfig.Instance().App()
 
-	account, err := app.UseCase().CreateAccountUseCase.Execute(ctx)
+	account, err := app.UseCase().CreateAccountUseCase().Execute(ctx)
 	if err != nil {
 		log.Fatalf("failed to create account: %v", err)
 	}

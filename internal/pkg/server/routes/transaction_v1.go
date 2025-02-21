@@ -13,14 +13,14 @@ func CreateGroupTransactionV1(app application.App) server.GroupRoute {
 		{
 			Path:    "/",
 			Method:  server.RouteMethodPost,
-			Handler: handler.CreateTransactionHandler(app.UseCase().CreateTransactionUseCase),
+			Handler: handler.CreateTransactionHandler(app.UseCase().CreateTransactionUseCase()),
 		},
 	}
 
 	return server.GroupRoute{
 		Path: "/transactions",
 		Middlewares: []server.Middleware{
-			middleware.ValidateExtractAccountTokenMiddleware(constant.AccessToken, app.UseCase().FindAccountByTokenUseCase),
+			middleware.ValidateExtractAccountTokenMiddleware(constant.AccessToken, app.UseCase().FindAccountByTokenUseCase()),
 		},
 		Routes: routes,
 	}

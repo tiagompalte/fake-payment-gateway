@@ -16,6 +16,10 @@ migrate-down:
 migrate-create: 
 	go run cmd/migrate/main.go create $(name)
 
+# make job name=?
+job:
+	go run cmd/job/main.go $(name)
+
 test-unit:
 	go test ./... -cover
 

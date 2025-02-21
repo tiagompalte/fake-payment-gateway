@@ -11,6 +11,6 @@ var ProviderSet = wire.NewSet(
 	pkg.ProviderSet,
 	infra.ProviderSet,
 	usecase.ProviderSet,
-	wire.Struct(new(usecase.UseCase), "*"),
+	usecase.NewUseCase,
 	ProvideApplication,
 )

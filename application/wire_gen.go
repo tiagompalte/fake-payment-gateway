@@ -31,12 +31,7 @@ func Build() (App, error) {
 	transactionRepository := data.NewTransactionRepository(connectorSql)
 	createTransactionUseCase := usecase.NewCreateTransactionUseCaseImpl(transactionRepository, configsConfig)
 	createAccountUseCase := usecase.NewCreateAccountUseCaseImpl(accountRepository)
-	useCase := usecase.UseCase{
-		HealthCheckUseCase:        healthCheckUseCase,
-		FindAccountByTokenUseCase: findAccountByTokenUseCase,
-		CreateTransactionUseCase:  createTransactionUseCase,
-		CreateAccountUseCase:      createAccountUseCase,
-	}
+	useCase := usecase.NewUseCase(healthCheckUseCase, findAccountByTokenUseCase, createTransactionUseCase, createAccountUseCase)
 	authAuth := auth.ProviderSet(configsConfig)
 	logLog := log.ProviderSet()
 	app := ProvideApplication(configsConfig, serverServer, useCase, authAuth, logLog)

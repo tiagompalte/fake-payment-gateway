@@ -17,7 +17,7 @@ func CreateRoute(app application.App) []server.GroupRoute {
 				{
 					Method:  server.RouteMethodGet,
 					Path:    "/health-check",
-					Handler: handler.HealthCheckHandler(app.UseCase().HealthCheckUseCase),
+					Handler: handler.HealthCheckHandler(app.UseCase().HealthCheckUseCase()),
 				},
 			},
 		},

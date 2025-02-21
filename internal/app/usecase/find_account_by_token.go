@@ -33,7 +33,7 @@ func (u FindAccountByTokenUseCaseImpl) Execute(ctx context.Context, token string
 	var account entity.Account
 	err := u.cache.Get(ctx, cacheKey, &account)
 	if err == nil {
-		return account, errors.Wrap(err)
+		return account, nil
 	}
 
 	account, err = u.account.FindByToken(ctx, token)
