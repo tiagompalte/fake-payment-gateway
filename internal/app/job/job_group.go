@@ -1,8 +1,11 @@
 package job
 
 import (
+	"context"
+
 	"github.com/tiagompalte/fake-payment-gateway/application"
 	"github.com/tiagompalte/fake-payment-gateway/internal/app/protocols"
+	"github.com/tiagompalte/fake-payment-gateway/pkg/errors"
 )
 
 type jobGroup struct {
@@ -17,7 +20,21 @@ func NewJobGroup(app application.App) jobGroup {
 	}
 }
 
-func (j jobGroup) GetJob(jobName string) (protocols.Job, bool) {
+func (j jobGroup) getJob(jobName string) (protocols.Job, bool) {
 	job, ok := j.job[jobName]
 	return job, ok
+}
+
+func (j jobGroup) Execute(ctx context.Context, jobName string, args ...any) error {
+	job, ok := j.getJob(jobName)
+	if !ok {
+		return errors.Wrap(ErrJobNotExists)
+	}
+
+	err := job.Execute(ctx, args...)
+	if err != nil {
+		return errors.Wrap(err)
+	}
+
+	return nil
 }

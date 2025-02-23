@@ -26,13 +26,8 @@ func main() {
 	}
 
 	jobGroup := job.NewJobGroup(app)
-	job, ok := jobGroup.GetJob(jobName)
-	if !ok {
-		log.Fatalf("job %s did not finded", jobName)
-	}
-
-	err = job.Execute(context.Background(), os.Args[2:])
+	err = jobGroup.Execute(context.Background(), jobName, os.Args[2:])
 	if err != nil {
-		log.Fatalf("failed to execute job %s (error: %v)", jobName, err)
+		log.Fatalf("error to execute job: %v", err)
 	}
 }

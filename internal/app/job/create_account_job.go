@@ -21,7 +21,7 @@ func NewCreateAccountJobImpl(createAccountUseCase usecase.CreateAccountUseCase) 
 }
 
 func (j createAccountJobImpl) Execute(ctx context.Context, args ...any) error {
-	account, err := j.createAccountUseCase.Execute(context.Background())
+	account, err := j.createAccountUseCase.Execute(ctx)
 	if err != nil {
 		log.Fatalf("failed to create account (error: %v)", err)
 	}
